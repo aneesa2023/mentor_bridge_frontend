@@ -1,130 +1,162 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class ExploreScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> mentors = [
-    {
-      "name": "Sarah M.",
-      "role": "Frontend Engineer",
-      "experience": "4+ yrs",
-      "bio": "Excited to help career switchers and frontend devs!",
-      "skills": ["React", "JS", "HTML"],
-      "avatarUrl": null,
-      "available": true
-    },
-    {
-      "name": "Rahul K.",
-      "role": "Backend Mentor",
-      "experience": "6 yrs",
-      "bio": "Here to support mentees stuck in their job search.",
-      "skills": ["Node.js", "SQL", "AWS"],
-      "avatarUrl": null,
-      "available": false
+import 'package:url_launcher/url_launcher.dart';
+
+class ExploreScreen extends StatefulWidget {
+  const ExploreScreen({super.key});
+
+  @override
+  State<ExploreScreen> createState() => _ExploreScreenState();
+}
+
+class _ExploreScreenState extends State<ExploreScreen> {
+  List<dynamic> mentors = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchMentors();
+  }
+
+  Future<void> fetchMentors() async {
+    const url =
+        'https://alq9rgfi10.execute-api.us-east-1.amazonaws.com/dev/mentors';
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      setState(() {
+        mentors = data;
+        isLoading = false;
+      });
+    } else {
+      setState(() => isLoading = false);
     }
-  ];
+  }
 
-  ExploreScreen({super.key});
+  Widget _buildChipSection(String title, List<dynamic> values) {
+    if (values.isEmpty) return SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title,
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            children: values.map((e) => Chip(label: Text(e))).toList(),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMentorCard(dynamic mentor) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 3,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 32,
+                  backgroundImage: NetworkImage(mentor['photo_url'] ?? ''),
+                  backgroundColor: Colors.orange.shade100,
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        mentor['full_name'] ?? '',
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      Text(mentor['current_company_role'] ?? '',
+                          style: const TextStyle(fontSize: 14)),
+                      Text(
+                          'Experience: ${mentor['experience_years'] ?? ''} years'),
+                      if (mentor['school'] != null)
+                        Text('School: ${mentor['school']}',
+                            style: const TextStyle(fontSize: 14)),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(height: 16),
+            _buildChipSection("Tech Stack", mentor['tech_stack']),
+            _buildChipSection("Industries", mentor['industries']),
+            _buildChipSection("Domains", mentor['domains']),
+            _buildChipSection("Personality", mentor['personality_tags']),
+            _buildChipSection("Mentoring Style", mentor['mentoring_style']),
+            _buildChipSection(
+                "Communication Style", mentor['communication_style']),
+            _buildChipSection("Languages Spoken", mentor['languages_spoken']),
+            _buildChipSection("Hobbies", mentor['hobbies']),
+            _buildChipSection("Mentee Types", mentor['mentee_types_to_help']),
+            const SizedBox(height: 8),
+            if (mentor['mentoring_reason'] != null)
+              Text('Why Mentor?: ${mentor['mentoring_reason']}',
+                  style: const TextStyle(fontStyle: FontStyle.italic)),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                if (mentor['linkedin_url'] != null)
+                  IconButton(
+                    icon: const Icon(Icons.linked_camera_rounded),
+                    onPressed: () =>
+                        launchUrl(Uri.parse(mentor['linkedin_url'])),
+                  ),
+                if (mentor['github'] != null)
+                  IconButton(
+                    icon: const Icon(Icons.code),
+                    onPressed: () => launchUrl(Uri.parse(mentor['github'])),
+                  ),
+                if (mentor['website'] != null)
+                  IconButton(
+                    icon: const Icon(Icons.web),
+                    onPressed: () => launchUrl(Uri.parse(mentor['website'])),
+                  ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange.shade50,
-
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: mentors.length,
-        itemBuilder: (context, index) {
-          final mentor = mentors[index];
-          return Card(
-            margin: const EdgeInsets.only(bottom: 20),
-            elevation: 3,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundColor: Colors.orange.shade100,
-                        backgroundImage: mentor["avatarUrl"] != null
-                            ? NetworkImage(mentor["avatarUrl"])
-                            : null,
-                        child: mentor["avatarUrl"] == null
-                            ? const Icon(Icons.person,
-                                size: 28, color: Colors.brown)
-                            : null,
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(mentor["name"],
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18)),
-                            const SizedBox(height: 2),
-                            Text("${mentor["role"]} • ${mentor["experience"]}",
-                                style: TextStyle(
-                                    color: Colors.grey.shade700, fontSize: 14)),
-                          ],
-                        ),
-                      ),
-                      Icon(
-                        mentor["available"]
-                            ? Icons.circle
-                            : Icons.circle_outlined,
-                        color: mentor["available"] ? Colors.green : Colors.grey,
-                        size: 12,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    mentor["bio"],
-                    style: const TextStyle(fontSize: 15, height: 1.4),
-                  ),
-                  const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: mentor["skills"]
-                        .map<Widget>(
-                          (skill) => Chip(
-                            label: Text(skill),
-                            backgroundColor: Colors.orange.shade100,
-                            labelStyle: const TextStyle(color: Colors.brown),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                  const SizedBox(height: 16),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 12),
-                      ),
-                      onPressed: () {
-                        // Trigger intro message
-                      },
-                      icon: const Icon(Icons.message_rounded),
-                      label: const Text("Send Intro"),
-                    ),
-                  )
-                ],
-              ),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: mentors.length,
+              itemBuilder: (context, index) => _buildMentorCard(mentors[index]),
             ),
-          );
-        },
-      ),
     );
+  }
+
+  Future<void> openUrl(Uri url) async {
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
