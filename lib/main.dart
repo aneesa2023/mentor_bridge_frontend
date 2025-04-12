@@ -7,8 +7,6 @@ import 'package:mentor_bridge_frontend/screens/dashboard_screen.dart';
 import 'package:mentor_bridge_frontend/screens/explore_screen.dart';
 import 'package:mentor_bridge_frontend/screens/message_draft_screen.dart';
 import 'package:mentor_bridge_frontend/screens/profile_screen.dart';
-import 'package:mentor_bridge_frontend/screens/progress_screen.dart';
-import 'package:mentor_bridge_frontend/screens/schedule_screen.dart';
 import 'package:mentor_bridge_frontend/screens/settings_screen.dart';
 
 void main() {
@@ -69,7 +67,6 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     DashboardScreen(),
-    ScheduleScreen(),
     MessageDraftScreen(),
     ExploreScreen(),
     AskWallScreen(),
@@ -91,9 +88,6 @@ class _MainScreenState extends State<MainScreen> {
         break;
       case 'affirmations':
         screen = AffirmationScreen();
-        break;
-      case 'progress':
-        screen = ProgressScreen();
         break;
       case 'profile':
         screen = ProfileScreen();
@@ -135,10 +129,6 @@ class _MainScreenState extends State<MainScreen> {
                       leading: Icon(Icons.favorite_outline),
                       title: Text("Affirmations"))),
               PopupMenuItem(
-                  value: 'progress',
-                  child: ListTile(
-                      leading: Icon(Icons.timeline), title: Text("Progress"))),
-              PopupMenuItem(
                   value: 'profile',
                   child: ListTile(
                       leading: Icon(Icons.person_outline),
@@ -163,8 +153,6 @@ class _MainScreenState extends State<MainScreen> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.schedule_outlined), label: "Schedule"),
           BottomNavigationBarItem(
               icon: Icon(Icons.auto_fix_high_outlined), label: "Messages"),
           BottomNavigationBarItem(

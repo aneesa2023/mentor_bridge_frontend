@@ -8,16 +8,26 @@ class AskWallScreen extends StatefulWidget {
 }
 
 class _AskWallScreenState extends State<AskWallScreen> {
-  final List<String> questions = [
-    "How do I ask for a raise?",
-    "Is switching careers at 30 too late?",
+  final List<Map<String, String>> posts = [
+    {
+      "question": "I’m scared to ask questions in meetings. Any advice?",
+      "timestamp": "2h ago"
+    },
+    {
+      "question": "Is it okay to say I don’t know during interviews?",
+      "timestamp": "4h ago"
+    },
   ];
+
   final TextEditingController _controller = TextEditingController();
 
   void _post() {
     if (_controller.text.trim().isNotEmpty) {
       setState(() {
-        questions.insert(0, _controller.text.trim());
+        posts.insert(0, {
+          "question": _controller.text.trim(),
+          "timestamp": "Just now",
+        });
         _controller.clear();
       });
     }
@@ -38,21 +48,30 @@ class _AskWallScreenState extends State<AskWallScreen> {
           child: TextField(
             controller: _controller,
             decoration: InputDecoration(
-              labelText: "Ask a question anonymously...",
+              labelText: "Ask something anonymously...",
               suffixIcon: IconButton(icon: Icon(Icons.send), onPressed: _post),
-              border: OutlineInputBorder(),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             ),
           ),
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: questions.length,
-            itemBuilder: (context, index) => ListTile(
-              leading: CircleAvatar(child: Icon(Icons.person_outline)),
-              title: Text(questions[index]),
-            ),
+            padding: EdgeInsets.all(12),
+            itemCount: posts.length,
+            itemBuilder: (context, index) {
+              final post = posts[index];
+              return Card(
+                margin: EdgeInsets.only(bottom: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                child: ListTile(
+                  leading: CircleAvatar(child: Icon(Icons.person_outline)),
+                  title: Text(post["question"]!),
+                  subtitle: Text(post["timestamp"]!),
+                ),
+              );
+            },
           ),
-        )
+        ),
       ],
     );
   }
