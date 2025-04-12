@@ -7,6 +7,7 @@ import 'package:mentor_bridge_frontend/screens/conversation_coach_screen.dart';
 import 'package:mentor_bridge_frontend/screens/dashboard_screen.dart';
 import 'package:mentor_bridge_frontend/screens/explore_screen.dart';
 import 'package:mentor_bridge_frontend/screens/message_draft_screen.dart';
+import 'package:mentor_bridge_frontend/screens/messages_screen.dart';
 import 'package:mentor_bridge_frontend/screens/profile_screen.dart';
 import 'package:mentor_bridge_frontend/screens/settings_screen.dart';
 import 'package:mentor_bridge_frontend/screens/login_screen.dart';
@@ -89,7 +90,8 @@ class MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const DashboardScreen(),
-    const MessageDraftScreen(),
+    // const MessageDraftScreen(),
+    const MessagesScreen(),
     ExploreScreen(),
     const AskWallScreen(),
   ];

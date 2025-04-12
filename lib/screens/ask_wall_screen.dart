@@ -41,6 +41,43 @@ class _AskWallScreenState extends State<AskWallScreen> {
           "text": "Try scripting your question beforehand!"
         }
       ]
+    },
+    {
+      "question": "How do I find a mentor who understands career switches?",
+      "timestamp": "4h ago",
+      "reply":
+          "Look for people who’ve done similar transitions and reach out through forums or LinkedIn.",
+      "liked": true,
+      "likeCount": 9,
+      "expanded": false,
+      "anonymous": false,
+      "user": {
+        "name": "Aanya Sharma",
+        "avatarUrl": null,
+      },
+      "comments": [
+        {
+          "name": "Ravi",
+          "isAnonymous": false,
+          "avatarUrl": null,
+          "text": "WomenWhoCode and ADPList are good places to start."
+        }
+      ]
+    },
+    {
+      "question": "What’s the best way to prepare for a mock interview?",
+      "timestamp": "5h ago",
+      "reply":
+          "Record yourself answering questions. Then review and refine your responses.",
+      "liked": false,
+      "likeCount": 2,
+      "expanded": false,
+      "anonymous": true,
+      "user": {
+        "name": "Anonymous",
+        "avatarUrl": null,
+      },
+      "comments": []
     }
   ];
 

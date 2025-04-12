@@ -1,108 +1,118 @@
 import 'package:flutter/material.dart';
-import 'package:mentor_bridge_frontend/services/auth_service.dart';
 import 'package:mentor_bridge_frontend/screens/chat_screen.dart';
 
-class DashboardScreen extends StatefulWidget {
+class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
-
-class _DashboardScreenState extends State<DashboardScreen> {
-  final AuthService _authService = AuthService();
-
-  @override
-  void initState() {
-    super.initState();
-    // Future: fetch dashboard data, tips, session info
-  }
-
-  final List<DashboardItem> items = [
-    DashboardItem(
-      title: "Next Session",
-      icon: Icons.calendar_today,
-      subtitle: "with Alex - Tomorrow",
-    ),
-    DashboardItem(
-      title: "Today's Tip",
-      icon: Icons.lightbulb_outline,
-      subtitle: "Ask questions. Stay curious.",
-    ),
-    DashboardItem(
-      title: "Celebrate",
-      icon: Icons.emoji_events_outlined,
-      subtitle: "Log your wins!",
-    ),
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              children: items.map((item) {
-                return Card(
-                  shape:
-                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(item.icon, size: 32, color: Colors.indigo),
-                        const SizedBox(height: 12),
-                        Text(
-                          item.title,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          item.subtitle,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 12),
-                        ),
-
-                      ],
-                    ),
-                  ),
-                );
-              }).toList(),
+          Text(
+            "Welcome Back!",
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.brown.shade800,
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ChatScreen(
-                      menteeId: 'mentee123', mentorId: 'mentor456'),
-                ),
-              );
-            },
-            child: const Text('Chat'),
-          )
+          const SizedBox(height: 16),
+
+          Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            elevation: 3,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("🌟 Tip of the Day", style: Theme.of(context).textTheme.titleMedium),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Break problems into smaller chunks and stay consistent.",
+                    style: TextStyle(color: Colors.grey.shade800),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            elevation: 3,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("🎯 Your Goals", style: Theme.of(context).textTheme.titleMedium),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Become confident in Flutter & land a frontend role.",
+                    style: TextStyle(color: Colors.grey.shade800),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            children: const [
+              _DashboardTile(icon: Icons.celebration, label: "Celebrate Win"),
+              _DashboardTile(icon: Icons.question_answer, label: "Ask Question"),
+              _DashboardTile(icon: Icons.explore, label: "Explore Mentors"),
+              _DashboardTile(icon: Icons.chat_bubble_outline, label: "Chat Room"),
+            ],
+          ),
         ],
       ),
     );
   }
 }
 
-class DashboardItem {
-  final String title;
+class _DashboardTile extends StatelessWidget {
   final IconData icon;
-  final String subtitle;
+  final String label;
 
-  DashboardItem({
-    required this.title,
-    required this.icon,
-    required this.subtitle,
-  });
+  const _DashboardTile({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 2,
+      child: InkWell(
+        onTap: () {
+          // Add navigation logic here if needed
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 32, color: Colors.indigo),
+              const SizedBox(height: 8),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

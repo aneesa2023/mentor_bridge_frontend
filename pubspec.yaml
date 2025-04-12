@@ -47,6 +47,8 @@ dependencies:
   flutter_chat_types: ^3.6.2
   uuid: ^4.5.1
   jwt_decoder: ^2.0.1
+  stream_chat_flutter: ^9.3.0
+  stream_chat_flutter_core: ^9.3.0
 
 dev_dependencies:
   flutter_test:
