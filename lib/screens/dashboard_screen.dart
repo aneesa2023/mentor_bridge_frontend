@@ -12,11 +12,6 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   final AuthService _authService = AuthService();
 
-  void _handleLogout(BuildContext context) async {
-    await _authService.logout();
-    Navigator.pushReplacementNamed(context, '/login');
-  }
-
   @override
   void initState() {
     super.initState();

@@ -15,7 +15,7 @@ import 'package:mentor_bridge_frontend/services/auth_service.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  print("Auth0 client: \${dotenv.env['AUTH0_CLIENT_ID']}");
+  print("Auth0 client: ${dotenv.env['AUTH0_CLIENT_ID']}");
 
   final authService = AuthService();
   final isLoggedIn = await authService.isLoggedIn();
