@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentor_bridge_frontend/services/auth_service.dart';
 import 'package:mentor_bridge_frontend/screens/chat_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -9,6 +10,13 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  final AuthService _authService = AuthService();
+
+  void _handleLogout(BuildContext context) async {
+    await _authService.logout();
+    Navigator.pushReplacementNamed(context, '/login');
+  }
+
   @override
   void initState() {
     super.initState();

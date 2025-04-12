@@ -100,6 +100,13 @@
             </list>
           </value>
         </entry>
+        <entry key="ffi">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/ffi-2.1.3/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="fixnum">
           <value>
             <list>
@@ -111,6 +118,20 @@
           <value>
             <list>
               <option value="$USER_HOME$/ruoit/flutter/packages/flutter/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_appauth">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_appauth-9.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_appauth_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_appauth_platform_interface-9.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -170,6 +191,48 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_secure_storage">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_secure_storage_linux">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_linux-1.2.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_secure_storage_macos">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_macos-3.1.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_secure_storage_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_platform_interface-1.1.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_secure_storage_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_web-1.2.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_secure_storage_windows">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_windows-3.1.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_test">
           <value>
             <list>
@@ -209,6 +272,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/intl-0.20.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="js">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/js-0.6.7/lib" />
             </list>
           </value>
         </entry>
@@ -296,10 +366,59 @@
             </list>
           </value>
         </entry>
+        <entry key="path_provider">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider-2.1.5/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_provider_android">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.2.16/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_provider_foundation">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_provider_linux">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_provider_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_provider_windows">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="photo_view">
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/photo_view-0.15.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="platform">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/platform-3.1.6/lib" />
             </list>
           </value>
         </entry>
@@ -492,6 +611,20 @@
             </list>
           </value>
         </entry>
+        <entry key="win32">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/win32-5.10.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="xdg_directories">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0/lib" />
+            </list>
+          </value>
+        </entry>
       </option>
     </properties>
     <CLASSES>
@@ -509,7 +642,10 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/diffutil_dart-4.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/equatable-2.0.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fake_async-1.3.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/ffi-2.1.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fixnum-1.1.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_appauth-9.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_appauth_platform_interface-9.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_chat_types-3.6.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_chat_ui-1.6.15/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_dotenv-5.2.1/lib" />
@@ -518,10 +654,17 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_markdown-0.7.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_parsed_text-2.2.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_linux-1.2.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_macos-3.1.3/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_platform_interface-1.1.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_web-1.2.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_windows-3.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/html-0.15.5+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http-1.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http_parser-4.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/intl-0.20.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/js-0.6.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/json_annotation-4.9.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker-10.0.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.8/lib" />
@@ -534,7 +677,14 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.15.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/nested-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path-1.9.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider-2.1.5/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.2.16/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/photo_view-0.15.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/platform-3.1.6/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/provider-6.1.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/scroll_to_index-3.0.1/lib" />
@@ -561,6 +711,8 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/visibility_detector-0.4.0+2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-14.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/web-1.1.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/win32-5.10.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0/lib" />
       <root url="file://$USER_HOME$/ruoit/flutter/bin/cache/pkg/sky_engine/lib" />
       <root url="file://$USER_HOME$/ruoit/flutter/packages/flutter/lib" />
       <root url="file://$USER_HOME$/ruoit/flutter/packages/flutter_test/lib" />
