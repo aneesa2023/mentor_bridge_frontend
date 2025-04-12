@@ -76,75 +76,75 @@ class AffirmationScreenState extends State<AffirmationScreen>
         child: _loading
             ? const CircularProgressIndicator()
             : FadeTransition(
-          opacity: _fade,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Card(
-              color: cardColor,
-              elevation: 8,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      "🌞",
-                      style: TextStyle(fontSize: 36),
+                opacity: _fade,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Card(
+                    color: cardColor,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
                     ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      "Your Boost for Today",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange,
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            "🌞",
+                            style: TextStyle(fontSize: 36),
+                          ),
+                          const SizedBox(height: 12),
+                          const Text(
+                            "Your Boost for Today",
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            '"${_affirmation ?? ""}"',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontStyle: FontStyle.italic,
+                              height: 1.5,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            "— from MentorBridge AI",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          ElevatedButton.icon(
+                            onPressed: _fetchAffirmation,
+                            icon: const Icon(Icons.refresh),
+                            label: const Text("New Boost"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange.shade300,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 12,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 24),
-                    Text(
-                      '"${_affirmation ?? ""}"',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        height: 1.5,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      "— from MentorBridge AI",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    ElevatedButton.icon(
-                      onPressed: _fetchAffirmation,
-                      icon: const Icon(Icons.refresh),
-                      label: const Text("New Boost"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange.shade300,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                          vertical: 12,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
       ),
     );
   }

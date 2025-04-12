@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentor_bridge_frontend/screens/chat_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -36,36 +37,56 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: GridView.count(
-        crossAxisCount: 2,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
-        children: items.map((item) {
-          return Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            elevation: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(item.icon, size: 32, color: Colors.indigo),
-                  const SizedBox(height: 12),
-                  Text(
-                    item.title,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+      child: Column(
+        children: [
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              children: items.map((item) {
+                return Card(
+                  shape:
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  elevation: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(item.icon, size: 32, color: Colors.indigo),
+                        const SizedBox(height: 12),
+                        Text(
+                          item.title,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          item.subtitle,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 12),
+                        ),
+
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    item.subtitle,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                ],
-              ),
+                );
+              }).toList(),
             ),
-          );
-        }).toList(),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ChatScreen(
+                      menteeId: 'mentee123', mentorId: 'mentor456'),
+                ),
+              );
+            },
+            child: const Text('Chat'),
+          )
+        ],
       ),
     );
   }
