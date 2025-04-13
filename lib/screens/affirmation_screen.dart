@@ -69,7 +69,7 @@ class AffirmationScreenState extends State<AffirmationScreen>
       backgroundColor: bgColor,
       appBar: AppBar(
         title: const Text("Daily Affirmation"),
-        backgroundColor: Colors.orange.shade300,
+        backgroundColor: Colors.orange,
         elevation: 0,
       ),
       body: Center(
@@ -128,7 +128,7 @@ class AffirmationScreenState extends State<AffirmationScreen>
                             icon: const Icon(Icons.refresh),
                             label: const Text("New Boost"),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange.shade300,
+                              backgroundColor: Colors.orange,
                               foregroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 24,

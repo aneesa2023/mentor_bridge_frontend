@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MessagesScreen extends StatefulWidget {
   const MessagesScreen({super.key});
@@ -8,42 +10,25 @@ class MessagesScreen extends StatefulWidget {
 }
 
 class _MessagesScreenState extends State<MessagesScreen> {
-  final List<Map<String, String>> chats = [
-    {
-      "name": "Rashmi Subhash",
-      "lastMessage": "Perfect! I’ll send you a resource pack.",
-      "time": "2m ago"
-    },
-    {
-      "name": "Aneesa Shaik",
-      "lastMessage": "Do you have availability this weekend?",
-      "time": "10m ago"
-    },
-    {
-      "name": "Aanya Sharma",
-      "lastMessage": "Thanks for the suggestions!",
-      "time": "1h ago"
-    },
-    {
-      "name": "Vikram Patel",
-      "lastMessage": "No worries, we’ll make it stronger together.",
-      "time": "3h ago"
-    },
-    {
-      "name": "Leela Joseph",
-      "lastMessage": "Can we schedule a session next week?",
-      "time": "1d ago"
-    },
-    {
-      "name": "Harshita Mehra",
-      "lastMessage": "That portfolio advice was super helpful 🙌",
-      "time": "2d ago"
-    },
-    {
-      "name": "MentorBot AI",
-      "lastMessage": "Here’s your personalized weekly tip!",
-      "time": "2d ago"
-    }
+  List<Map<String, String>> chats = [];
+  bool isLoading = true;
+
+  final List<String> sampleMessages = [
+    "Say hi to your mentor!",
+    "Looking forward to connecting!",
+    "Excited to help you grow!",
+    "Ready for your questions.",
+    "Here if you need guidance.",
+    "Just one message away!"
+  ];
+
+  final List<String> sampleTimes = [
+    "Now",
+    "2m ago",
+    "5m ago",
+    "10m ago",
+    "1h ago",
+    "Yesterday"
   ];
 
   void openChat(String name) {
@@ -56,18 +41,69 @@ class _MessagesScreenState extends State<MessagesScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    fetchMentors();
+  }
+
+  Future<void> fetchMentors() async {
+    const url = 'https://alq9rgfi10.execute-api.us-east-1.amazonaws.com/dev/mentors';
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      setState(() {
+        chats = data.map<Map<String, String>>((mentor) {
+          return {
+            "name": mentor['full_name'] ?? 'Unknown',
+            "photo_url": mentor['photo_url'] ?? '',
+            "lastMessage": (sampleMessages..shuffle()).first,
+            "time": (sampleTimes..shuffle()).first,
+          };
+        }).toList();
+        isLoading = false;
+      });
+    } else {
+      setState(() => isLoading = false);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange.shade50,
-      body: ListView.separated(
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.separated(
         itemCount: chats.length,
         separatorBuilder: (_, __) => const Divider(height: 1),
         itemBuilder: (context, index) {
           final chat = chats[index];
+
           return ListTile(
-            leading: const CircleAvatar(
-              backgroundColor: Colors.orange,
-              child: Icon(Icons.person, color: Colors.white),
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: chat['photo_url'] != null && chat['photo_url']!.isNotEmpty
+                  ? Image.network(
+                chat['photo_url']!,
+                height: 48,
+                width: 48,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  height: 48,
+                  width: 48,
+                  color: Colors.orange.shade100,
+                  alignment: Alignment.center,
+                  child: const Icon(Icons.person, color: Colors.white),
+                ),
+              )
+                  : Container(
+                height: 48,
+                width: 48,
+                color: Colors.orange.shade100,
+                alignment: Alignment.center,
+                child: const Icon(Icons.person, color: Colors.white),
+              ),
             ),
             title: Text(chat['name']!),
             subtitle: Text(chat['lastMessage']!),
@@ -151,14 +187,14 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 final isMe = index % 2 == 0;
                 return Align(
                   alignment:
-                      isMe ? Alignment.centerRight : Alignment.centerLeft,
+                  isMe ? Alignment.centerRight : Alignment.centerLeft,
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 4),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 14, vertical: 10),
                     decoration: BoxDecoration(
                       color:
-                          isMe ? Colors.orange.shade300 : Colors.grey.shade300,
+                      isMe ? Colors.orange.shade300 : Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(messages[index]),

@@ -17,14 +17,21 @@ class _CelebrateScreenState extends State<CelebrateScreen> {
       "achievement": "Landed my first internship!",
       "message":
           "🎉 That’s incredible! The first step in your journey is always worth celebrating.",
-      "reactions": {"🎉": 2, "❤️": 1}
+      "reactions": {"🎉": 20, "❤️": 18}
     },
     {
       "user": {"name": "Samira Singh", "avatar": null},
       "achievement": "Completed 100 days of code!",
       "message":
           "🔥 Your dedication is inspiring. Keep pushing forward, coder!",
-      "reactions": {"🎉": 3, "❤️": 0}
+      "reactions": {"🎉": 34, "❤️": 22}
+    },
+    {
+      "user": {"name": "Amelia Woodwords", "avatar": null},
+      "achievement": "Won coding hackathon this weekend!",
+      "message":
+      "🔥 Your achievement is inspiring. Keep growing!",
+      "reactions": {"🎉": 13, "❤️": 10}
     },
   ];
 
@@ -80,7 +87,7 @@ class _CelebrateScreenState extends State<CelebrateScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(10),
                 color: Colors.orange.shade50,
                 border: Border.all(color: Colors.orange.shade100),
               ),
@@ -95,11 +102,11 @@ class _CelebrateScreenState extends State<CelebrateScreen> {
   Widget _celebrationCard(Map<String, dynamic> post, int index) {
     final user = post["user"];
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.orange.shade100,
@@ -148,12 +155,12 @@ class _CelebrateScreenState extends State<CelebrateScreen> {
       backgroundColor: bg,
       appBar: AppBar(
         title: const Text("Celebrate Your Win"),
-        backgroundColor: Colors.orange.shade300,
+        backgroundColor: Colors.orange,
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 TextField(
@@ -166,7 +173,7 @@ class _CelebrateScreenState extends State<CelebrateScreen> {
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 12),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -180,7 +187,7 @@ class _CelebrateScreenState extends State<CelebrateScreen> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
               ],

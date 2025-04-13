@@ -78,7 +78,36 @@ class _AskWallScreenState extends State<AskWallScreen> {
         "avatarUrl": null,
       },
       "comments": []
-    }
+    },
+    {
+      "question":
+          "I’m scared to re-join tech industry after a long break. Any advice?",
+      "timestamp": "12h ago",
+      "reply":
+          "You're not alone. Start by writing questions down and asking one per meeting.",
+      "liked": false,
+      "likeCount": 14,
+      "expanded": false,
+      "anonymous": true,
+      "user": {
+        "name": "Jane Doe",
+        "avatarUrl": null,
+      },
+      "comments": [
+        {
+          "name": "Priya",
+          "isAnonymous": false,
+          "avatarUrl": null,
+          "text": "I used to be like that too. Start with 1:1 meetings."
+        },
+        {
+          "name": "Anonymous",
+          "isAnonymous": true,
+          "avatarUrl": null,
+          "text": "Try scripting your question beforehand!"
+        }
+      ]
+    },
   ];
 
   Future<void> _post() async {
@@ -174,7 +203,7 @@ class _AskWallScreenState extends State<AskWallScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(8),
               itemCount: posts.length,
               itemBuilder: (context, index) {
                 final post = posts[index];
@@ -183,8 +212,8 @@ class _AskWallScreenState extends State<AskWallScreen> {
                 final comments = post["comments"] as List;
 
                 return Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  padding: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(14),
