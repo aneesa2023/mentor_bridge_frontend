@@ -49,6 +49,7 @@ dependencies:
   jwt_decoder: ^2.0.1
   stream_chat_flutter: ^9.3.0
   stream_chat_flutter_core: ^9.3.0
+  fluttertoast: ^8.2.4
 
 dev_dependencies:
   flutter_test:

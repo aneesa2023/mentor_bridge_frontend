@@ -492,6 +492,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fluttertoast">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-8.2.12/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="freezed_annotation">
           <value>
             <list>
@@ -1507,6 +1514,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_web-1.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage_windows-3.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_svg-2.0.17/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-8.2.12/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/freezed_annotation-2.4.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/get_thumbnail_video-0.7.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/hashcodes-2.0.0/lib" />
