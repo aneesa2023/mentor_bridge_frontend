@@ -31,14 +31,6 @@ MentorBridge is an AI-powered mentorship platform designed to help women across 
 
 ---
 
-## 📸 Screenshots
-
-| Explore | Chat | Ask Wall | Affirmations |
-|--------|------|----------|--------------|
-| ![](screenshots/explore.png) | ![](screenshots/chat.png) | ![](screenshots/ask_wall.png) | ![](screenshots/affirmation.png) |
-
----
-
 ## 🛠 Setup Instructions
 
 ### Prerequisites
@@ -69,6 +61,12 @@ Create a `.env` file in the root directory and include:
 AUTH0_DOMAIN=your-auth0-domain
 AUTH0_CLIENT_ID=your-client-id
 API_BASE_URL=https://your-api-url.amazonaws.com/dev
+AUTH0_REDIRECT_URI=com.your_project.app://login-callback
+AUTH0_ISSUER=https://dev-your_key.us.auth0.com
+#AUTH0_LOGOUT_REDIRECT_URI=com.your_project.app://logout
+AUTH0_LOGOUT_REDIRECT_URI=https://your_project.app/logout-callback
+STREAM_API_KEY=your_key
+STREAM_API_SECRET=your_secret_key
 ```
 
 You may use [`flutter_dotenv`](https://pub.dev/packages/flutter_dotenv) to load them securely.
@@ -113,7 +111,7 @@ We welcome contributions to improve the platform for underrepresented voices in 
 
 ## 📬 Contact
 
-Built by [Rashmi Subhash](/rashmisubhash) & [Aneesa Shaikh](/aneesa2023).  
+Built by [Rashmi B Subhash](https://github.com/rashmisubhash) & [Aneesa Shaik](https://github.com/aneesa2023/).  
 Reach out if you'd like to collaborate or join the mission 💜
 
 ---
